@@ -1,19 +1,28 @@
 /*
-  Blink
-  Turns on an LED on for one second, then off for one second, repeatedly.
+  Switch
+  Hold switch to change the state of the LED and the relay
 */
 
+// Variables
+int trigger = 0;
 
 // the setup function runs once when you press reset or power the board
 void setup() {
-  // initialize digital pin LED_BUILTIN as an output.
-  pinMode(13, OUTPUT);
+  pinMode(0, INPUT);    // switch
+  pinMode(12, OUTPUT);  // relay
+  pinMode(13, OUTPUT);  // LED
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);                       // wait for a second
-  digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);                       // wait for a second
+  trigger = digitalRead(0);
+  if(trigger){
+    digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
+    digitalWrite(12, HIGH);
+    delay(1000);              // wait for a second
+  } else {
+    digitalWrite(13, LOW);
+    digitalWrite(12, LOW);
+    delay(1000);
+  }  
 }
