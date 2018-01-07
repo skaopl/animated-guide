@@ -18,11 +18,11 @@ void loop() {
   trigger = digitalRead(0);
   if(trigger){
     digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-    digitalWrite(12, HIGH);
+    digitalWrite(12, LOW);
     delay(1000);              // wait for a second
   } else {
     digitalWrite(13, LOW);
-    digitalWrite(12, LOW);
+    digitalWrite(12, HIGH);
     delay(1000);
   }  
 }
